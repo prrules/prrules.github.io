@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The truth</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span id="text"></span><span class="cursor">|</span>
+    </div>
+
+    <script>
+        const text = "PR rules...";
+        let index = 0;
+        const speed = 150;
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById("text").textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, speed);
+            }
+        }
+
+        typeText();
+    </script>
+</body>
+</html>
